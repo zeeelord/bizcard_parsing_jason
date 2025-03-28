@@ -1,13 +1,37 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-class ParsingJason extends StatelessWidget {
+class ParsingJason extends StatefulWidget {
   const ParsingJason({super.key});
+
+  @override
+  State<ParsingJason> createState() => _ParsingJasonState();
+}
+
+class _ParsingJasonState extends State<ParsingJason> {
+  late Future data;
+  @override
+  void initState() {
+    super.initState();
+    data = getData();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(title: Text("ParsingJason")));
   }
+}
+
+Future getData() async {
+  var data;
+  // allows you to write data in a variable without worrying about it data type
+  String url = "https://jsonplaceholder.typicode.com/posts";
+  Network network = Network(url);
+  data = network.fetchData();
+  print(data);
+  return data;
 }
 
 class Network {
@@ -17,8 +41,8 @@ class Network {
     print("$url");
     Response response = await get(Uri.parse(url));
     if (response.statusCode == 200) {
-      print(response.body);
-      return response.body;
+      print(response.body[0]);
+      return json.encode(response.body);
     } else {
       print(response.statusCode);
     } // for it to be read uri
