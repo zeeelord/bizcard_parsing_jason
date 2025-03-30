@@ -29,6 +29,7 @@ Future getData() async {
   // allows you to write data in a variable w ithout worrying about it data type
   String url = "https://jsonplaceholder.typicode.com/posts";
   Network network = Network(url);
+  // this is a class that will fetch the data
   data = network.fetchData();
   print(data);
   return data;
