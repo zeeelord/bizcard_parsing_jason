@@ -12,6 +12,7 @@ class ParsingJason extends StatefulWidget {
 
 class _ParsingJasonState extends State<ParsingJason> {
   late Future data;
+  // init a new varible here having the type of future
   @override
   void initState() {
     super.initState();
@@ -26,7 +27,7 @@ class _ParsingJasonState extends State<ParsingJason> {
 
 Future getData() async {
   Future data;
-  // allows you to write data in a variable w ithout worrying about it data type
+  // allows you to write data in a variable without worrying about it data type
   String url = "https://jsonplaceholder.typicode.com/posts";
   Network network = Network(url);
   // this is a class that will fetch the data
