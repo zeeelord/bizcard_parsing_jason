@@ -27,7 +27,7 @@ class _ParsingJasonState extends State<ParsingJason> {
 
 Future getData() async {
   Future data;
-  // allows you to write data in a variable without worrying about it data type
+  // var  allows you to write data in a variable without worrying about it data type
   String url = "https://jsonplaceholder.typicode.com/posts";
   Network network = Network(url);
   // this is a class that will fetch the data
@@ -38,7 +38,9 @@ Future getData() async {
 
 class Network {
   final String url;
+
   Network(this.url);
+
   Future fetchData() async {
     print(url);
     Response response = await get(Uri.parse(url));
